@@ -1,22 +1,28 @@
-﻿using Data.System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Portal.Data.System;
 using Portal.Web.System.Services;
+using System.IO;
 using System.Text;
 
 namespace Portal.Web
 {
     public class Startup
     {
-        private readonly IConfiguration config;
+        private readonly IConfigurationRoot config;
 
-        public Startup(IConfiguration config)
+        public Startup()
         {
-            this.config = config;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddUserSecrets<Startup>();
+
+            config = builder.Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -32,7 +38,7 @@ namespace Portal.Web
                 );
 
             services.AddDbContext<SystemContext>(options =>
-                options.UseSqlServer(config.GetConnectionString("AzureConnection")));
+                options.UseSqlServer(config["connectionString"]));
 
             services.AddMvcCore()
                 .AddJsonFormatters();
