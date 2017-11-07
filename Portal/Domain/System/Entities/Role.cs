@@ -1,6 +1,6 @@
 ﻿using Portal.Domain.Common;
 
-namespace Portal.Domain.System
+namespace Portal.Domain.System.Entities
 {
     public class Role : Entity
     {
