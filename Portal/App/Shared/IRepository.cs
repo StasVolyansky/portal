@@ -2,8 +2,9 @@
 
 namespace App.Shared
 {
-    public interface IWriteRepository<in T> where T : Entity
+    public interface IRepository<T> where T : Entity
     {
+        T GetById(int id);
         void Create(T entity);
         void Update(T entity);
         void Delete(int id);

@@ -7,12 +7,12 @@ namespace App.System
 {
     public class SystemManager
     {
-        private readonly IWriteRepository<User> command;
+        private readonly IRepository<User> repository;
         private readonly SystemService systemService;
 
-        public SystemManager(IWriteRepository<User> command, SystemService systemService)
+        public SystemManager(IRepository<User> command, SystemService systemService)
         {
-            this.command = command;
+            this.repository = command;
             this.systemService = systemService;
         }
 
@@ -20,7 +20,13 @@ namespace App.System
         {
             var user = systemService.CreateUser(dto.Email, dto.Password);
 
-            command.Create(user);
+            repository.Create(user);
+        }
+
+        public void AssignUserToRole(RoleAssignmentDto dto)
+        {
+            var user = repository.GetById(dto.UserId);
+
         }
     }
 }
