@@ -1,7 +1,6 @@
 ﻿using App.Shared;
 using App.System.DTO;
 using Portal.Domain.System;
-using Portal.Domain.System.Entities;
 
 namespace App.System
 {

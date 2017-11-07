@@ -1,7 +1,7 @@
-﻿using Portal.Domain.Common;
+using Portal.Domain.Common;
 using System.Collections.Generic;
 
-namespace Portal.Domain.System.Entities
+namespace Portal.Domain.System
 {
     public class User : Entity
     {
@@ -26,9 +26,9 @@ namespace Portal.Domain.System.Entities
                 PasswordHash = passwordHash;
         }
 
-        public void AddRole(Role role)
+        public void AddRoleEnrolment(int roleId)
         {
-            roleEnrolments.Add(new RoleEnrolment(role));
+            roleEnrolments.Add(new RoleEnrolment(roleId));
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Portal.Domain.System.Entities;
-
-namespace Portal.Domain.System
+﻿namespace Portal.Domain.System
 {
     public class SystemService
     {
