@@ -14,9 +14,6 @@ namespace Portal.Data.System
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("system");
-
-            modelBuilder.Entity<RoleEnrolment>()
-                .HasOne(enrollment => enrollment.Role);
         }
     }
 }
