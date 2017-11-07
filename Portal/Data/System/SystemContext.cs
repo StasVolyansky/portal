@@ -15,8 +15,8 @@ namespace Portal.Data.System
         {
             modelBuilder.HasDefaultSchema("system");
 
-            //modelBuilder.Entity<RoleEnrolment>()
-            //    .HasOne(enrollment => enrollment.User);
+            modelBuilder.Entity<RoleEnrolment>()
+                .HasOne(enrollment => enrollment.Role);
         }
     }
 }

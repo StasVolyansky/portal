@@ -26,14 +26,9 @@ namespace Portal.Domain.System.Entities
                 PasswordHash = passwordHash;
         }
 
-        public void AddRoleEnrolment(RoleEnrolment roleEnrolment)
+        public void AddRole(Role role)
         {
-            roleEnrolments.Add(roleEnrolment);
-        }
-
-        public void RemoveRoleEnrolment(RoleEnrolment roleEnrolment)
-        {
-            roleEnrolments.Remove(roleEnrolment);
+            roleEnrolments.Add(new RoleEnrolment(role));
         }
     }
 }
