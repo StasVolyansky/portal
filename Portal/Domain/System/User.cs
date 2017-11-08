@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Portal.Domain.System
 {
-    public class User : Entity
+    public class User : AggregateRoot
     {
         public string Email { get; private set; }
         public string PasswordHash { get; private set; }

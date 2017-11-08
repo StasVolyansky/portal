@@ -7,7 +7,7 @@
             return new User(email, HashPassword(password));
         }
 
-        private static string HashPassword(string password) =>
+        public string HashPassword(string password) =>
             password.GetHashCode().ToString();
     }
 }

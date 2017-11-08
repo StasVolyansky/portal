@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using App.Shared;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Portal.Data.Common;
 using Portal.Data.System;
+using Portal.Domain.System;
 using Portal.Web.System.Services;
 using System.IO;
 using System.Text;
@@ -44,6 +47,9 @@ namespace Portal.Web
                 .AddJsonFormatters();
 
             services.AddSingleton<TokenService>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped<SystemService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
