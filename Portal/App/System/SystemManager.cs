@@ -33,7 +33,7 @@ namespace App.System
             userRepository.Update(user);
         }
 
-        public bool CheckCredentials(string login, string password) =>
+        public bool IsValidCredentials(string login, string password) =>
             userRepository.Find(u => string.Equals(u.Email, login, StringComparison.CurrentCultureIgnoreCase)
                 && u.PasswordHash == systemService.HashPassword(password)).Count() > 0;
     }
